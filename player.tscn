@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://34x480vt7i2"]
+
+[ext_resource type="Texture2D" uid="uid://cdu1mc86fb0yl" path="res://icon.svg" id="1_8xa7p"]
+
+[node name="PlayerSprite" type="Node2D"]
+metadata/_edit_vertical_guides_ = []
+metadata/_edit_horizontal_guides_ = []
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="torso_bone" type="Bone2D" parent="Skeleton2D"]
+
+[node name="torso" type="Sprite2D" parent="Skeleton2D/torso_bone"]
+texture = ExtResource("1_8xa7p")
+
+[node name="arm_0_bone" type="Bone2D" parent="Skeleton2D/torso_bone"]
+position = Vector2(-72, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso_bone/arm_0_bone"]
+position = Vector2(0, 32)
+scale = Vector2(0.1875, 0.75)
+texture = ExtResource("1_8xa7p")
+
+[node name="wrist_0_bone" type="Bone2D" parent="Skeleton2D/torso_bone/arm_0_bone"]
+position = Vector2(0, 80)
+auto_calculate_length_and_angle = false
+length = 45.0
+bone_angle = 90.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso_bone/arm_0_bone/wrist_0_bone"]
+position = Vector2(0, 24)
+scale = Vector2(0.1875, 0.4375)
+texture = ExtResource("1_8xa7p")
+
+[node name="arm_1_bone" type="Bone2D" parent="Skeleton2D/torso_bone"]
+position = Vector2(72, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso_bone/arm_1_bone"]
+position = Vector2(0, 32)
+scale = Vector2(0.1875, 0.75)
+texture = ExtResource("1_8xa7p")
+
+[node name="wrist_1_bone" type="Bone2D" parent="Skeleton2D/torso_bone/arm_1_bone"]
+position = Vector2(0, 80)
+auto_calculate_length_and_angle = false
+length = 45.0
+bone_angle = 90.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso_bone/arm_1_bone/wrist_1_bone"]
+position = Vector2(0, 24)
+scale = Vector2(0.1875, 0.4375)
+texture = ExtResource("1_8xa7p")
