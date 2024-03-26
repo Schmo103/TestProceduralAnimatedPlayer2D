@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc87vjwnj08nw"]
+
+[ext_resource type="Script" path="res://mech.gd" id="1_7i1s8"]
+[ext_resource type="Script" path="res://enter_area.gd" id="2_nusbk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jnwe"]
+size = Vector2(103, 137)
+
+[node name="mech" type="CharacterBody2D"]
+z_index = -7
+script = ExtResource("1_7i1s8")
+
+[node name="body" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+offset = Vector2(-335, 57)
+polygon = PackedVector2Array(285, -115, 235, -49, 283, 0, 396, -1, 437, -47, 393, -113)
+
+[node name="door" type="Polygon2D" parent="body"]
+color = Color(0.235294, 0, 0, 1)
+polygon = PackedVector2Array(-41, 48, -31, 95, 30, 95, 42, 44)
+
+[node name="controls" type="Polygon2D" parent="body"]
+position = Vector2(3, -134)
+color = Color(0.235294, 0, 0, 1)
+polygon = PackedVector2Array(-46, 64, -31, 95, 30, 95, 42, 63, -3, 52)
+
+[node name="top" type="Polygon2D" parent="body"]
+z_index = 10
+color = Color(0.0588235, 0, 0, 1)
+polygon = PackedVector2Array(-57, -17, 0, 13, 73, -16, 100, 10, 62, 55, -51, 57, -99, 8)
+
+[node name="shoulder_left" type="Polygon2D" parent="body"]
+position = Vector2(-73, -2)
+color = Color(0.215686, 0, 0, 1)
+offset = Vector2(73, 2)
+polygon = PackedVector2Array(-61, 66, -60, -65, -124, -41)
+
+[node name="arm" type="Polygon2D" parent="body/shoulder_left"]
+position = Vector2(-16, -46)
+color = Color(0.0588235, 0, 0, 1)
+offset = Vector2(89, 48)
+polygon = PackedVector2Array(-96, -147, -66, -131, -70, -47, -112, -39)
+
+[node name="shoulder_right" type="Polygon2D" parent="body"]
+position = Vector2(71.7979, 3.26472)
+scale = Vector2(-1, 1)
+color = Color(0.215686, 0, 0, 1)
+offset = Vector2(64.7979, -8.26472)
+polygon = PackedVector2Array(-61, 66, -60, -65, -124, -41)
+
+[node name="arm" type="Polygon2D" parent="body/shoulder_right"]
+position = Vector2(-4.4545, 2.6727)
+color = Color(0.0588235, 0, 0, 1)
+offset = Vector2(69.2524, -5.93742)
+polygon = PackedVector2Array(-96, -147, -66, -131, -70, -47, -112, -39)
+
+[node name="seat" type="Node2D" parent="body"]
+position = Vector2(0, -20)
+
+[node name="exit" type="Node2D" parent="body"]
+position = Vector2(0, 118)
+
+[node name="enter_area" type="Area2D" parent="." groups=["interactable"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("2_nusbk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_area"]
+position = Vector2(2, 38.5)
+shape = SubResource("RectangleShape2D_7jnwe")
+
+[node name="enter_mech_prompt" type="Label" parent="."]
+visible = false
+z_index = 25
+offset_left = -57.0
+offset_top = 19.0
+offset_right = 61.0
+offset_bottom = 42.0
+text = "enter mech : 'E'"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-50, -58, 57, -56, 101, 11, 61, 56, -51, 56, -99, 9)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="enter_area" to="." method="_on_enter_area_body_entered"]
+[connection signal="body_exited" from="enter_area" to="." method="_on_enter_area_body_exited"]

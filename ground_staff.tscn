@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4jkf87i8d7ac"]
+
+[ext_resource type="Script" path="res://ground_staff.gd" id="1_fqkqh"]
+[ext_resource type="PackedScene" uid="uid://sg7lgk6q7txj" path="res://staff.tscn" id="1_hvii1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63r1s"]
+size = Vector2(10, 133)
+
+[node name="ground_staff" type="Area2D"]
+script = ExtResource("1_fqkqh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_63r1s")
+
+[node name="staff" parent="." instance=ExtResource("1_hvii1")]
+scale = Vector2(1, 1)

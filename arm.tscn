@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://8um1bfurtobu"]
+
+[ext_resource type="Texture2D" uid="uid://cdu1mc86fb0yl" path="res://icon.svg" id="1_4hg2s"]
+
+[node name="arm" type="Polygon2D"]
+scale = Vector2(0.5, 0.5)
+offset = Vector2(-121, -13)
+texture = ExtResource("1_4hg2s")
+polygon = PackedVector2Array(127.488, 11.8483, 123.223, 5.21327, 115.166, 0, 116.114, 128.199, 123.934, 122.986, 128.199, 115.877)
+uv = PackedVector2Array(127.488, 11.8483, 123.223, 5.21327, 115.166, 0, 116.114, 128.199, 123.934, 122.986, 128.199, 115.877)
+
+[node name="forearm" type="Polygon2D" parent="."]
+position = Vector2(5.96046e-08, 103)
+scale = Vector2(1, 1.74667)
+offset = Vector2(-63, -8)
+texture = ExtResource("1_4hg2s")
+polygon = PackedVector2Array(57.5847, 0, 54.0501, 73.6377, 64.0648, 77.4669, 74.2268, 74.8159, 68.9249, 0.147275)
+uv = PackedVector2Array(57.5847, 0, 54.0501, 73.6377, 64.0648, 77.4669, 74.2268, 74.8159, 68.9249, 0.147275)

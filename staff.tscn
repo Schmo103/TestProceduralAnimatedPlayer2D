@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://sg7lgk6q7txj"]
+
+[node name="staff" type="Polygon2D"]
+scale = Vector2(1, 1.6)
+color = Color(0.113725, 0.113725, 0.113725, 1)
+offset = Vector2(1, 23)
+polygon = PackedVector2Array(-6, -89, 5, -89, 3, -39, 5, 44, -4, 42, -4, -34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

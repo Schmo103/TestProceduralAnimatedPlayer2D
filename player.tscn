@@ -1,52 +1,157 @@
-[gd_scene load_steps=2 format=3 uid="uid://34x480vt7i2"]
+[gd_scene load_steps=10 format=3 uid="uid://bycpth5x64evp"]
 
+[ext_resource type="Script" path="res://player.gd" id="1_2w4bv"]
 [ext_resource type="Texture2D" uid="uid://cdu1mc86fb0yl" path="res://icon.svg" id="1_8xa7p"]
+[ext_resource type="PackedScene" uid="uid://8um1bfurtobu" path="res://arm.tscn" id="2_gs3sr"]
+[ext_resource type="Texture2D" uid="uid://ch11v70cil46o" path="res://topdowns.PNG" id="4_y5l3p"]
+[ext_resource type="PackedScene" uid="uid://sg7lgk6q7txj" path="res://staff.tscn" id="5_0crlf"]
 
-[node name="PlayerSprite" type="Node2D"]
-metadata/_edit_vertical_guides_ = []
-metadata/_edit_horizontal_guides_ = []
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t34l0"]
+radius = 19.0
+height = 82.0
 
-[node name="Skeleton2D" type="Skeleton2D" parent="."]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dc6m4"]
+radius = 41.3038
 
-[node name="torso_bone" type="Bone2D" parent="Skeleton2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_00l4y"]
 
-[node name="torso" type="Sprite2D" parent="Skeleton2D/torso_bone"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrby8"]
+size = Vector2(139, 83)
+
+[node name="player" type="CharacterBody2D"]
+rotation = 1.5708
+script = ExtResource("1_2w4bv")
+
+[node name="body" type="Polygon2D" parent="."]
+visible = false
+offset = Vector2(-64, -64)
 texture = ExtResource("1_8xa7p")
+polygon = PackedVector2Array(54.1329, 19.4489, 41.6532, 24.1491, 42.4635, 34.684, 33.8736, 41.1669, 25.6078, 35.9806, 17.0178, 47.812, 22.5284, 55.4295, 22.6904, 90.4376, 27.5527, 98.7034, 46.5154, 107.455, 64.1815, 109.238, 80.389, 107.455, 92.7066, 103.566, 101.621, 97.0827, 105.348, 89.9514, 105.348, 55.1053, 111.507, 47.3258, 102.593, 35.9806, 94.3274, 41.0049, 85.7374, 34.5219, 86.3857, 23.987, 73.5819, 19.611, 68.8817, 29.0113, 59.1572, 28.8493)
+uv = PackedVector2Array(54.1329, 19.4489, 41.6532, 24.1491, 42.4635, 34.684, 33.8736, 41.1669, 25.6078, 35.9806, 17.0178, 47.812, 22.5284, 55.4295, 22.6904, 90.4376, 27.5527, 98.7034, 46.5154, 107.455, 64.1815, 109.238, 80.389, 107.455, 92.7066, 103.566, 101.621, 97.0827, 105.348, 89.9514, 105.348, 55.1053, 111.507, 47.3258, 102.593, 35.9806, 94.3274, 41.0049, 85.7374, 34.5219, 86.3857, 23.987, 73.5819, 19.611, 68.8817, 29.0113, 59.1572, 28.8493)
 
-[node name="arm_0_bone" type="Bone2D" parent="Skeleton2D/torso_bone"]
-position = Vector2(-72, 0)
+[node name="arm" parent="body" instance=ExtResource("2_gs3sr")]
+position = Vector2(38, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso_bone/arm_0_bone"]
-position = Vector2(0, 32)
-scale = Vector2(0.1875, 0.75)
-texture = ExtResource("1_8xa7p")
+[node name="arm2" parent="body" instance=ExtResource("2_gs3sr")]
+position = Vector2(-38, 0)
 
-[node name="wrist_0_bone" type="Bone2D" parent="Skeleton2D/torso_bone/arm_0_bone"]
-position = Vector2(0, 80)
-auto_calculate_length_and_angle = false
-length = 45.0
-bone_angle = 90.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-3, 1.086e-05)
+shape = SubResource("CapsuleShape2D_t34l0")
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso_bone/arm_0_bone/wrist_0_bone"]
-position = Vector2(0, 24)
-scale = Vector2(0.1875, 0.4375)
-texture = ExtResource("1_8xa7p")
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
 
-[node name="arm_1_bone" type="Bone2D" parent="Skeleton2D/torso_bone"]
-position = Vector2(72, 0)
+[node name="vehicle_enter_spot" type="Area2D" parent="."]
+visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso_bone/arm_1_bone"]
-position = Vector2(0, 32)
-scale = Vector2(0.1875, 0.75)
-texture = ExtResource("1_8xa7p")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vehicle_enter_spot"]
+visible = false
+shape = SubResource("CircleShape2D_dc6m4")
 
-[node name="wrist_1_bone" type="Bone2D" parent="Skeleton2D/torso_bone/arm_1_bone"]
-position = Vector2(0, 80)
-auto_calculate_length_and_angle = false
-length = 45.0
-bone_angle = 90.0
+[node name="Topdowns" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-23, -11.9999)
+rotation = -1.5708
+texture = ExtResource("4_y5l3p")
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso_bone/arm_1_bone/wrist_1_bone"]
-position = Vector2(0, 24)
-scale = Vector2(0.1875, 0.4375)
-texture = ExtResource("1_8xa7p")
+[node name="torso" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_00l4y")
+color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+polygon = PackedVector2Array(-0.00015204, -42, -5.00015, -41, -11.0001, -38, -16.0001, -32.9999, -21.0001, -23.9999, -21, 7.60198e-05, -20.9999, 23.0001, -14.9999, 34.0001, -7.99986, 40, 0.00015204, 42, 7.00014, 40, 14.0001, 30.9999, 17.0001, 14.9999, 17, -6.15398e-05, 16.9999, -14.0001, 13.9999, -29.0001, 8.99987, -37, 4.99986, -40)
+
+[node name="head" type="Polygon2D" parent="torso"]
+material = SubResource("ShaderMaterial_00l4y")
+position = Vector2(-0.186859, 0.0758903)
+scale = Vector2(1.11872, 0.999998)
+color = Color(0.290196, 0.00784314, 0.00784314, 1)
+offset = Vector2(-3.40848, -1.07588)
+polygon = PackedVector2Array(-16, -9.99994, -21, 7.60198e-05, -19, 8.00007, -11.9999, 16, -2.99994, 15, 12, 13, 17, 0.999938, 12, -10, -9.00005, -15)
+
+[node name="leg_right" type="Polygon2D" parent="torso"]
+z_index = -1
+material = SubResource("ShaderMaterial_00l4y")
+position = Vector2(-0.999917, 23)
+scale = Vector2(0.532258, 1.76)
+color = Color(0.054902, 0.054902, 0.054902, 1)
+polygon = PackedVector2Array(-2.00007, -20, 4.99995, -14, 42, -14.0002, 44.9999, -19.0002, 43.6492, -23.0524, 41.9999, -28.0002, 5.99988, -33)
+
+[node name="foot_right" type="Polygon2D" parent="torso/leg_right"]
+material = SubResource("ShaderMaterial_00l4y")
+position = Vector2(41.2219, -20.9368)
+scale = Vector2(1.22545, 0.863637)
+color = Color(0.117647, 0, 0, 1)
+offset = Vector2(-41.2219, 20.9368)
+polygon = PackedVector2Array(39.9999, -19.0001, 42.9999, -16.0002, 63.7575, -15.0001, 65.6363, -17.0001, 65.6363, -21.0001, 65.6362, -25.0001, 63.7574, -27.0001, 40.9999, -27.0001)
+
+[node name="leg_left" type="Polygon2D" parent="torso"]
+z_index = -1
+material = SubResource("ShaderMaterial_00l4y")
+position = Vector2(3.00019, 53)
+scale = Vector2(0.457025, 1.76)
+color = Color(0.054902, 0.054902, 0.054902, 1)
+polygon = PackedVector2Array(4.99995, -14, 42, -14.0002, 44.9999, -18.0002, 41.9999, -28.0002, 5.99988, -33)
+
+[node name="foot_left" type="Polygon2D" parent="torso/leg_left"]
+material = SubResource("ShaderMaterial_00l4y")
+position = Vector2(42.0165, -21.5583)
+scale = Vector2(1.17505, 0.727273)
+color = Color(0.117647, 0, 0, 1)
+offset = Vector2(-41.0165, 22.5583)
+polygon = PackedVector2Array(39.9999, -19.0001, 42.9999, -16.0002, 63.0777, -15.0001, 65.2657, -18.0001, 65.2657, -21.0001, 65.2656, -25.0001, 63.0776, -28.0001, 40.9999, -27.0001)
+
+[node name="arm_left" type="Polygon2D" parent="torso"]
+material = SubResource("ShaderMaterial_00l4y")
+position = Vector2(3.00011, 31)
+color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+offset = Vector2(-2.59524, -34.7502)
+polygon = PackedVector2Array(-5.19611, 36.9242, -5.19609, 42.9242, -1.4047, 51.7502, 51.5953, 52.75, 61.5953, 44.75, 55.5952, 35.75, 1.95489, 31.9242)
+
+[node name="hand_left" type="Polygon2D" parent="torso/arm_left"]
+z_index = -1
+material = SubResource("ShaderMaterial_00l4y")
+position = Vector2(48, 9.99983)
+rotation = -0.147922
+color = Color(0.290196, 0.00784314, 0.00784314, 1)
+offset = Vector2(0.571755, -41.1059)
+polygon = PackedVector2Array(-5.19611, 36.9242, -5.1961, 42.9242, -0.0673952, 51.2914, 45.0733, 46.8962, 51.1977, 39.7205, 46.9892, 34.0382, 3.02758, 30.5207)
+
+[node name="staff" parent="torso/arm_left/hand_left" instance=ExtResource("5_0crlf")]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_00l4y")
+position = Vector2(37.4803, -0.481447)
+rotation = 0.147922
+
+[node name="arm_right" type="Polygon2D" parent="torso"]
+material = SubResource("ShaderMaterial_00l4y")
+position = Vector2(-1.00012, -32)
+scale = Vector2(1, -1)
+color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+offset = Vector2(-2.59524, -34.7502)
+polygon = PackedVector2Array(-5.19611, 36.9242, -5.19609, 42.9242, 0.16719, 49.9242, 55.5952, 48.7504, 61.5952, 42.7504, 56.5952, 32.7504, 1.95489, 31.9242)
+
+[node name="hand_right" type="Polygon2D" parent="torso/arm_right"]
+z_index = -1
+material = SubResource("ShaderMaterial_00l4y")
+position = Vector2(51, 7.00019)
+rotation = -0.0519034
+color = Color(0.290196, 0.00784314, 0.00784314, 1)
+offset = Vector2(0.571755, -41.1059)
+polygon = PackedVector2Array(-5.19611, 36.9242, -5.1961, 42.9242, 0.16719, 49.9242, 47.208, 46.5922, 54.6136, 38.9662, 49.9316, 32.7149, 2.04816, 29.2258)
+
+[node name="pickup_area" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="pickup_collide" type="CollisionShape2D" parent="pickup_area"]
+position = Vector2(48.5, -0.500178)
+shape = SubResource("RectangleShape2D_yrby8")
+
+[connection signal="area_entered" from="vehicle_enter_spot" to="." method="_on_vehicle_enter_spot_area_entered"]
+[connection signal="area_exited" from="vehicle_enter_spot" to="." method="_on_vehicle_enter_spot_area_exited"]
+
+[editable path="body/arm"]
+[editable path="body/arm2"]

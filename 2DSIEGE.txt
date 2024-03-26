@@ -1,0 +1,87 @@
+2D SIEGE IDEAS/DOCS
+
+game features:
+	steam power:
+		* this idea is that most weapons/items run on steam, so the game could 
+		have more of a survival element to it where collecting steam cannisters
+		(which could be carried outside of inventory, with a cap on how many)
+		is critical to be able to have weapons work. weapons may have their own 
+		ammo type as well, or just run on steam cannisters.
+
+general player setup/controls:
+	inventory:
+		* essentially has four 'slots'
+		* two of them are equipable/unequipable for general items/weapons
+		* other two are character specific pre-equipped abilities(listed below in 'characters')
+
+
+weapons:
+	dagger{
+		can be collected to be thrown, each can be used as weak melee weapon.
+	}
+	blade{
+		strong melee weapon, longer reach than dagger.
+	}
+	shield{
+		can block things when equipped. higher levels may allow for other weapons to be used at
+		the same time.
+	}
+	heavy pistol{
+		player can hold up to 8 ammo at one time.
+		ammo can be loaded into gun by pressing reload while equipped.
+		(takes 2.3 seconds to reload)
+		shoots one shot that deals heavy dmg to anything.
+		bullets are inaccurate at long range.-
+		good accuraccy at short range.
+	}
+
+items
+
+characters:
+	smokes:
+		[very simple]
+		has two smoke bomb types. one is dark and hard to see through, and the other is much easier
+		to see through and is like poison to all inside.
+	grapple:
+		[simple yet hard to master]
+		two different grappling hooks. first can be shot and held to quickly fly towards
+		walls. second can be deployed to repel above the ground across rooms/tunnels to repel
+		alongst it.
+	snipe:
+		[medium complexity]
+		has two crossbows with different uses. the first shoots light arrows that illuminate
+		their surroundings. this light releases a powerful flash to those near it and facing its
+		direction when it impacts. the second can be shot to deal high damage to players.
+	mech:
+		[most complex player class] 
+		the player has no abilities, unless inside the exosuit
+		the player himself is a small character with reduced stats. the
+		character owns a mech/exosuit that he can climb into or out of. when in the exosuit, he has
+		two abilities- swing/block with arms in faced direction and grab/throw in faced direction.
+		the mechs swing/block- swing does a melee attack with high dmg to near targets in front of 
+		mech. block- crosses mech arms in front of mech in attempt to block oncoming attacks.
+		if attack is blockable, the mech blocks the attack and if not the mech lessens dmg.
+		grab/throw- mech grabs targeted object and throws when clicked again. this can be anything 
+		from characters to large chunks of environment. the mech also has weaknesses- after taking 
+		heavy dmg, such as bombs etc. it can be destroyed. and it has to be powered to be active. 
+		if it loses power it shuts down. it can be powered by two tubes- with a sizably long length
+		each. the tubes can be attached to active steam pipes/access on maps to be active and
+		power the mech the tubes can be unplugged/damaged needing the player to exit the mech and
+		fix/plug back in.
+		(other idea for mech is to make so that the mec=h can hold normal weapons and there is
+		no grab/swing etc.- the two tubes take the two ability slots?)
+	pyro:
+		[simple yet hard to master]
+		has two pyro tubes that can be versatile and fired for different effects. he can fire
+		the at the ground for a directional jump-dash this tubes pressure can be adjusted for more
+		or less powerful blasts(steam canisters). he can fire the second directly into a wall 
+		to blast a hole through the wall. -
+	-IDEAS-:(need to develop further)
+	mole:
+		[hard to play, very powerful when mastered]
+		can tunnel into walls and ground. can sabotage many things from enemy mech to ships
+		to environment. good players can make traps out of environment for other team.
+	flank:
+		has good movement with dash ability and cloak-throws small moving steam clusters 
+		from self, one of which has the player in it. these clusters, when shot can be dispersed
+		to discover player position
