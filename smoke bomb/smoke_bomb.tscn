@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn0tlr5jaki88"]
+
+[ext_resource type="Texture2D" uid="uid://bs0hwyuqly1vn" path="res://smoke bomb/smoke.png" id="1_q4ucb"]
+
+[sub_resource type="Curve" id="Curve_rhag5"]
+_data = [Vector2(0, 0.30868), 0.0, -0.0844719, 0, 0, Vector2(1, 0), -0.367386, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2rs28"]
+curve = SubResource("Curve_rhag5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a3va8"]
+lifetime_randomness = 0.24
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 1414.9
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+damping_min = 100.0
+damping_max = 100.0
+color = Color(0.501961, 0.501961, 0.501961, 1)
+alpha_curve = SubResource("CurveTexture_2rs28")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+collision_use_scale = true
+
+[node name="smoke_bomb" type="GPUParticles2D"]
+position = Vector2(1, -2)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_a3va8")
+texture = ExtResource("1_q4ucb")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0

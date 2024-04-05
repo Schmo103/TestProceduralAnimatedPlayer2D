@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chss364m1agk2"
-path="res://.godot/imported/steamp_ai1.png-f24d335e4f3b67cfc562777455d0bdf3.ctex"
+uid="uid://ckjgiq8p3cx5s"
+path="res://.godot/imported/light.png-0e051657a5d670919288cab7d3ea3c2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://steamp_ai1.png"
-dest_files=["res://.godot/imported/steamp_ai1.png-f24d335e4f3b67cfc562777455d0bdf3.ctex"]
+source_file="res://weapons/grenade/light.png"
+dest_files=["res://.godot/imported/light.png-0e051657a5d670919288cab7d3ea3c2d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch11v70cil46o"
-path="res://.godot/imported/topdowns.PNG-475d2bb69f323dd324ee795a8cd42537.ctex"
+uid="uid://culsxyklesixi"
+path="res://.godot/imported/steamp_ai2.png-a05b149201500400fb0ff9b003ccb60b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://topdowns.PNG"
-dest_files=["res://.godot/imported/topdowns.PNG-475d2bb69f323dd324ee795a8cd42537.ctex"]
+source_file="res://unused/steamp_ai2.png"
+dest_files=["res://.godot/imported/steamp_ai2.png-a05b149201500400fb0ff9b003ccb60b.ctex"]
 
 [params]
 

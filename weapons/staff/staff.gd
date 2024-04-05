@@ -10,7 +10,3 @@ var attack_animation = "staff_attack"
 var attack_animation_2 = "staff_attack_2"
 var path = "torso/arm_left/hand_left/staff"
 
-func attack() -> void:
-	pass
-
-

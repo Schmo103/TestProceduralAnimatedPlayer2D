@@ -21,6 +21,8 @@ extends CharacterBody2D
 @export var acceleration = 0.1
 @export var body_rotation_speed = 6
 
+@export var violent_hand : Node2D
+
 @onready var hook := $grapple/hook
 @onready var hook_shape := $grapple/hook/CollisionShape2D
 @onready var line := $grapple/Line2D
@@ -29,12 +31,13 @@ var inv_slot_1 : Weapon
 var inv_slot_2 : Weapon
 
 const HOOK_MAX_LENGTH := 2000.0
-const HOOK_SPEED := 10000.0
+const HOOK_SPEED := 5000.0
 const PLAYER_HOOK_SPEED := 2750.0
 
 var grappling = false
 var attacking = false
 var sprinting = false
+var idle = false
 var dashing = false  # New variable to track if the player is dashing
 var mouse_position = Vector2()
 var prev_angle_difference = 0.0
@@ -73,6 +76,8 @@ func get_input():
 		dashing = true
 	return input
 
+# This represents the player's inertia.
+var push_force = 80.0
 func _physics_process(delta):
 	match player_state:
 		PlayerStates.DEFAULT:
@@ -92,10 +97,17 @@ func _physics_process(delta):
 						animate("run")
 			else:
 				velocity = velocity.lerp(Vector2.ZERO, friction)
-				if !dashing:
-					if !attacking:
-						anim_p.stop()
+				if !dashing and !attacking:
+					animate("still")
+			
 			move_and_slide()
+			
+			
+			for i in get_slide_collision_count():
+				var c = get_slide_collision(i)
+				if c.get_collider() is RigidBody2D:
+					c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+			
 			
 			if !clambering:
 				# Update the mouse position
@@ -103,14 +115,14 @@ func _physics_process(delta):
 				
 				# Rotate the arms instantly towards the mouse
 				
-				arm1.look_at(mouse_position)
-				arm2.look_at(mouse_position)
+				#arm1.look_at(mouse_position)
+				#arm2.look_at(mouse_position)
 				body.look_at(mouse_position)
 				$CollisionShape2D.look_at(mouse_position)
 				%pickup_area.look_at(mouse_position)
 				#arm1.rotate(-89.31)
 				#arm2.rotate(-89.8)
-				animate("RESET")
+				#animate("still")
 
 				## Interpolate the body rotation towards the mouse
 				#var body_angle = body.rotation
@@ -178,6 +190,8 @@ func animate(animation):
 				anim_p.play("run",-1,sprint_speed/485.7)
 			elif animation == "walk":
 				anim_p.play("walk")
+			elif animation == "still":
+				anim_p.play("still")
 		elif animation == "dash":
 			anim_p.play("dash")
 		elif animation == "clamber":
@@ -187,6 +201,8 @@ func animate(animation):
 			anim_p.play("grapple")
 	elif animation == "staff_attack":
 		anim_p.play("staff_attack",-1,2)
+	elif animation == "grenade_attack":
+		anim_p.play("grenade_attack",-1,1.5)
 
 func _on_animation_player_animation_finished(anim_name):
 	match anim_name:
@@ -196,8 +212,11 @@ func _on_animation_player_animation_finished(anim_name):
 			clambering = false
 		"staff_attack":
 			attacking = false
+		"grenade_attack":
+			attacking = false
 		"grapple":
 			grappling = false
+
 
 func _input(event: InputEvent) -> void:
 	if !in_vehicle:
@@ -215,11 +234,18 @@ func _input(event: InputEvent) -> void:
 			#instance.global_position = get_viewport().get_mouse_position()
 			#instance.emitting = true
 			
-			if inv_slot_1 != null:
-				inv_slot_1.attack()
-				attacking = true
-				animate(inv_slot_1.attack_animation)
-				print("swipe")
+			if inv_slot_1 != null or inv_slot_2 != null:
+				if current_inv_slot == 1:
+					inv_slot_1.attack()
+					attacking = true
+					animate(inv_slot_1.attack_animation)
+					print(inv_slot_1.attack_animation)
+					print("slot 1 attacking")
+				elif current_inv_slot == 2:
+					inv_slot_2.attack()
+					attacking = true
+					animate(inv_slot_2.attack_animation)
+					print("slot 2 attacking")
 	
 
 func _on_hook_body_entered(body1):
@@ -243,6 +269,10 @@ func _process(delta):
 				area.interact(self)
 	if Input.is_action_just_pressed("pickup"):
 		pickup_items()
+	if Input.is_action_just_pressed("switch_weapon"):
+		if inv_slot_1 != null and inv_slot_2 != null:
+			switch_weapon()
+			print("switch_weapon_caled")
 
 
 
@@ -295,7 +325,7 @@ func pickup_items():
 			print("item picked up")
 			
 
-
+var current_inv_slot = 1
 func add_to_inv(weapon : Weapon):
 	if inv_slot_1 == null:
 		inv_slot_1 = weapon
@@ -303,14 +333,37 @@ func add_to_inv(weapon : Weapon):
 		print("invslot1 is full")
 	elif inv_slot_2 == null:
 		inv_slot_2 = weapon
-		equip_weapon(weapon)
+		#equip_weapon(weapon)
+		print("invslot2 is full")
 	else:
 		return false
 	return true
 
 
 func equip_weapon(weapon : Weapon):
-	animate(weapon.equip_animation)
-	print(weapon.path)
-	get_node(weapon.path).visible = true
+		get_node(weapon.path).visible = true
+		animate(weapon.equip_animation)
+		weapon.player = self
+		#print(weapon.path)
 
+func switch_weapon():
+	if current_inv_slot == 1:
+		current_inv_slot = 2
+		get_node(inv_slot_1.path).visible = false
+		equip_weapon(inv_slot_2)
+		
+	elif current_inv_slot == 2:
+		current_inv_slot = 1
+		get_node(inv_slot_2.path).visible = false
+		equip_weapon(inv_slot_1)
+		
+
+func release_item():#primarily for letting go of grenade
+	if current_inv_slot == 1:
+		inv_slot_1.release()
+		#print("releasing slot 1")
+	elif current_inv_slot == 2:
+		inv_slot_2.release()
+		#print("releasing slot 2")
+	#print("current inv slot: " + str(inv_slot_1))
+	

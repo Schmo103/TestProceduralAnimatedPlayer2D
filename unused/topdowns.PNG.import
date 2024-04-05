@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs0hwyuqly1vn"
-path="res://.godot/imported/smoke.png-1dd42aa5792ef5e83f35f3747dc7c67d.ctex"
+uid="uid://ch11v70cil46o"
+path="res://.godot/imported/topdowns.PNG-2608888daa26d328e67a6c0824326bc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://smoke.png"
-dest_files=["res://.godot/imported/smoke.png-1dd42aa5792ef5e83f35f3747dc7c67d.ctex"]
+source_file="res://unused/topdowns.PNG"
+dest_files=["res://.godot/imported/topdowns.PNG-2608888daa26d328e67a6c0824326bc3.ctex"]
 
 [params]
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c61q1et2nhkdm"]
+
+[ext_resource type="Script" path="res://weapons/grenade/ground_grenade.gd" id="1_8yey2"]
+
+[node name="ground_smoke_grenade" type="Area2D"]
+script = ExtResource("1_8yey2")
+
+[node name="back" type="Polygon2D" parent="."]
+scale = Vector2(0.35, 0.35)
+color = Color(0.243137, 0.243137, 0.243137, 1)
+polygon = PackedVector2Array(-12, -34, 21, -33, 38, -8, 21, 28, -13, 28, -34, -2)
+
+[node name="front" type="Polygon2D" parent="."]
+scale = Vector2(0.35, 0.35)
+color = Color(0.211765, 0, 0, 0.513726)
+polygon = PackedVector2Array(-12, -34, 5, -42, 21, -33, 15, -1, 21, 28, 3, 35, -13, 28, -9, -3)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+scale = Vector2(0.35, 0.35)
+polygon = PackedVector2Array(5.71429, -42.8571, 20, -34.2857, 37.1429, -8.57143, 20, 28.5714, 2.85714, 34.2857, -11.4286, 28.5714, -34.2857, -2.85714, -11.4286, -34.2857)

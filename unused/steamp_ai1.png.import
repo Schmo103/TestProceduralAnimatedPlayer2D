@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://culsxyklesixi"
-path="res://.godot/imported/steamp_ai2.png-9409931341c9d7241e44cb08375a3517.ctex"
+uid="uid://chss364m1agk2"
+path="res://.godot/imported/steamp_ai1.png-d6cb681cbf23e2c9a74d811ac48a9f99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://steamp_ai2.png"
-dest_files=["res://.godot/imported/steamp_ai2.png-9409931341c9d7241e44cb08375a3517.ctex"]
+source_file="res://unused/steamp_ai1.png"
+dest_files=["res://.godot/imported/steamp_ai1.png-d6cb681cbf23e2c9a74d811ac48a9f99.ctex"]
 
 [params]
 

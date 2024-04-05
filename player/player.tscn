@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bycpth5x64evp"]
+[gd_scene load_steps=11 format=3 uid="uid://bycpth5x64evp"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_2w4bv"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_2w4bv"]
 [ext_resource type="Texture2D" uid="uid://cdu1mc86fb0yl" path="res://icon.svg" id="1_8xa7p"]
-[ext_resource type="PackedScene" uid="uid://8um1bfurtobu" path="res://arm.tscn" id="2_gs3sr"]
-[ext_resource type="Texture2D" uid="uid://ch11v70cil46o" path="res://topdowns.PNG" id="4_y5l3p"]
-[ext_resource type="PackedScene" uid="uid://sg7lgk6q7txj" path="res://staff.tscn" id="5_0crlf"]
+[ext_resource type="PackedScene" uid="uid://8um1bfurtobu" path="res://player/arm.tscn" id="2_gs3sr"]
+[ext_resource type="Texture2D" uid="uid://ch11v70cil46o" path="res://unused/topdowns.PNG" id="4_y5l3p"]
+[ext_resource type="PackedScene" uid="uid://sg7lgk6q7txj" path="res://weapons/staff/staff.tscn" id="5_ciffj"]
+[ext_resource type="PackedScene" uid="uid://bkxjdfeh7r83d" path="res://weapons/grenade/grenade.tscn" id="6_kbtaj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t34l0"]
 radius = 19.0
@@ -118,12 +119,16 @@ color = Color(0.290196, 0.00784314, 0.00784314, 1)
 offset = Vector2(0.571755, -41.1059)
 polygon = PackedVector2Array(-5.19611, 36.9242, -5.1961, 42.9242, -0.0673952, 51.2914, 45.0733, 46.8962, 51.1977, 39.7205, 46.9892, 34.0382, 3.02758, 30.5207)
 
-[node name="staff" parent="torso/arm_left/hand_left" instance=ExtResource("5_0crlf")]
+[node name="staff" parent="torso/arm_left/hand_left" instance=ExtResource("5_ciffj")]
 unique_name_in_owner = true
 visible = false
 material = SubResource("ShaderMaterial_00l4y")
 position = Vector2(37.4803, -0.481447)
 rotation = 0.147922
+
+[node name="grenade" parent="torso/arm_left/hand_left" instance=ExtResource("6_kbtaj")]
+visible = false
+position = Vector2(43.4573, -6.66811)
 
 [node name="arm_right" type="Polygon2D" parent="torso"]
 material = SubResource("ShaderMaterial_00l4y")
